@@ -4,9 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ForeignKey;
 
 @Entity
 @Table(name = "Endereco")
@@ -27,6 +33,48 @@ public class Endereco implements Serializable {
 	private Integer numero;
 	@Column(name = "Complemento")
 	private Integer complemento;
+
+	@OneToOne(optional = true, fetch = FetchType.LAZY)
+	@ForeignKey(name = "EnderecoPessoa")
+	@JoinColumn(name = "IdPessoa", referencedColumnName = "IdPessoa")
+	private Pessoa pessoa;
+
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ForeignKey(name = "EnderecoTipoLogradouro")
+	@JoinColumn(name = "IdTipoLogradouro", referencedColumnName = "IdTipoLogradouro")
+	private TipoLogradouro tipoLogradouro;
+
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ForeignKey(name = "EnderecoTipoEndereco")
+	@JoinColumn(name = "idTipoEndereco", referencedColumnName = "idTipoEndereco")
+	private TipoEndereco tipoEndereco;
+
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ForeignKey(name = "EnderecoEstado")
+	@JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
+	private Estado estado;
+
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ForeignKey(name = "EnderecoCidade")
+	@JoinColumn(name = "idCidade", referencedColumnName = "idCidade")
+	private Cidade cidade;
+
+	public Endereco() {
+		super();
+		this.cidade = new Cidade();
+		this.estado = new Estado();
+		this.tipoLogradouro = new TipoLogradouro();
+		this.tipoEndereco = new TipoEndereco();
+		this.pessoa = new Pessoa();
+	}
+
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 
 	public Integer getIdEndereco() {
 		return idEndereco;
