@@ -26,7 +26,7 @@ public class TipoEndereco implements Serializable {
 	@Column(name = "DescricaoTipoEndereco")
 	private String descricaoTipoEndereco;
 
-	@OneToMany(mappedBy = "TipoEndereco", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "idTipoEndereco", fetch = FetchType.LAZY)
 	@ForeignKey(name = "Endereco_TipoEndereco")
 	private List<Endereco> enderecos;
 

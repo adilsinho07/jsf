@@ -25,7 +25,7 @@ public class Cidade implements Serializable {
 	@Column(name = "Nome", length = 90, nullable = false)
 	private String nome;
 
-	@OneToMany(mappedBy = "Cidade")
+	@OneToMany(mappedBy = "idCidade")
 	@ForeignKey(name = "CidadeEndereco")
 	private List<Endereco> enderecos;
 	
