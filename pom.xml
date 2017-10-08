@@ -23,12 +23,6 @@
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>prime-repo</id>
-			<name>PrimeFaces Maven Repository</name>
-			<url>http://repository.primefaces.org</url>
-			<layout>default</layout>
-		</repository>
 
 
 
@@ -108,13 +102,13 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>3.5</version>
+			<version>5.2</version>
 		</dependency>
 
 		<!-- ######## TEMAS DO PRIMEFACES ######### -->
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>cupertino</artifactId>
+			<artifactId>all-themes</artifactId>
 			<version>${themes.version}</version>
 		</dependency>
 
