@@ -7,10 +7,12 @@ import org.hibernate.Session;
 
 public class PhaseListener implements javax.faces.event.PhaseListener {
 
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void afterPhase(PhaseEvent fase) {
+		System.out.println("Depois da fase " + fase.getPhaseId().toString());
 		if (fase.getPhaseId().equals(PhaseId.RENDER_RESPONSE)) {
-			System.out.println("Depois da fase " + getPhaseId().toString());
 			Session session = FacesContextUtil.getRequestSession();
 			try {
 				session.getTransaction().commit();
@@ -27,8 +29,8 @@ public class PhaseListener implements javax.faces.event.PhaseListener {
 
 	@Override
 	public void beforePhase(PhaseEvent fase) {
+		System.out.println("Antes da fase " + fase.getPhaseId().toString());
 		if (fase.getPhaseId().equals(PhaseId.RESTORE_VIEW)) {
-			System.out.println("Antes da fase " + getPhaseId().toString());
 			Session session = HibernateUtil.getSessionfactory().openSession();
 			session.beginTransaction();
 			FacesContextUtil.setRequestSession(session);

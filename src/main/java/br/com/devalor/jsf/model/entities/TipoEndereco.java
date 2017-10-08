@@ -14,7 +14,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
-@Table(name = "TipoEndereco")
+@Table(name = "tipoEndereco")
 public class TipoEndereco implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +26,7 @@ public class TipoEndereco implements Serializable {
 	@Column(name = "DescricaoTipoEndereco")
 	private String descricaoTipoEndereco;
 
-	@OneToMany(mappedBy = "idTipoEndereco", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "tipoEndereco", fetch = FetchType.LAZY)
 	@ForeignKey(name = "Endereco_TipoEndereco")
 	private List<Endereco> enderecos;
 

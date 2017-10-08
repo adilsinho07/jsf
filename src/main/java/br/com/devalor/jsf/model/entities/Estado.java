@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
-@Table(name = "Estado")
+@Table(name = "estado")
 public class Estado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,7 +23,7 @@ public class Estado implements Serializable {
 	private Integer idEstado;
 	private String nomeEstado;
 
-	@OneToMany(mappedBy = "idEstado", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "estado", fetch = FetchType.LAZY)
 	@ForeignKey(name = "Endereco_Estado")
 	private List<Endereco> enderecos;
 
