@@ -28,7 +28,7 @@
 							</p:inputText>
 							<p:panel>
 								<p:commandButton value="Salvar" action="#{cidadeMB.addCidade}"
-									image="ui-icon ui-icon-disk" update="@form" />
+									image="ui-icon ui-icon-disk" update="@form :formTable" />
 								<p:commandButton value="Cancelar"
 									actionListener="#{cidadeMB.limpCidade}"
 									image="ui-icon ui-icon-close" update="@form" />
@@ -37,7 +37,26 @@
 					</h:form>
 				</p:tab>
 			</p:tabView>
+
+			<h:form id="formTable">
+				<p:growl id="msg1" />
+				<p:dataTable id="idTabela" var="cidade" value="#{cidadeMB.cidades}"
+					paginator="true" rows="10"
+					emptyMessage="Nenhum registro encontrado."
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<f:facet name="header">Lista de Cidades</f:facet>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Nome" />
+						</f:facet>
+						<h:outputText value="#{cidade.nome}"></h:outputText>
+					</p:column>
+					<p:column>
+						<p:commandButton value="Editar" image="ui-icon ui-icon-pencil"></p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
 		</p:fieldset>
-		<h:outputLabel>tarefas</h:outputLabel>
 	</ui:define>
 </ui:composition>
