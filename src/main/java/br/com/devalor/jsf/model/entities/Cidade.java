@@ -5,8 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,13 +20,13 @@ public class Cidade implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue
 	@Column(name = "idCidade")
 	private Integer idCidade;
 	@Column(name = "Nome", length = 90)
 	private String nome;
 
-	@OneToMany(mappedBy = "cidade")
+	@OneToMany(mappedBy = "cidade", fetch = FetchType.LAZY)
 	@ForeignKey(name = "EnderecoCidade")
 	private List<Endereco> enderecos;
 

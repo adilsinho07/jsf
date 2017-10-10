@@ -3,7 +3,6 @@ package br.com.devalor.jsf.model.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 
